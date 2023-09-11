@@ -45,7 +45,7 @@ export const App = () => {
     async function addImg() {
       try {
         setLoading(true);
-        setError(false);
+        // setError(false);
         const img = await fetchImg(query, page);
 
         const imghelper = img.data.hits.map(item => ({
