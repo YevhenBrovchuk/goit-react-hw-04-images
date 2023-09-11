@@ -12,16 +12,16 @@ export const App = () => {
   const [page, setPage] = useState(1);
   const [showBtn, setShowBtn] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [modalImg, setModalImg] = useState('');
-  const [randomId, setRandomId] = useState('');
+  // const [randomId, setRandomId] = useState('');
 
   const handleSubmit = evt => {
     setQuery(evt);
     setImages([]);
     setPage(1);
-    setRandomId(Date.now());
+    // setRandomId(Date.now());
   };
 
   const handleLoadMore = () => {
@@ -58,7 +58,7 @@ export const App = () => {
 
         setShowBtn(Math.ceil(img.data.totalHits / 12));
       } catch (error) {
-        setError(true);
+        // setError(true);
       } finally {
         setLoading(false);
       }
