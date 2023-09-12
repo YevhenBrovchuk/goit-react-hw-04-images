@@ -15,13 +15,13 @@ export const App = () => {
   // const [error, setError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [modalImg, setModalImg] = useState('');
-  const [randomId, setRandomId] = useState('');
+  // const [randomId, setRandomId] = useState('');
 
   const handleSubmit = query => {
     setQuery(query);
     setImages([]);
     setPage(1);
-    setRandomId(Date.now());
+    // setRandomId(Date.now());
   };
 
   const handleLoadMore = () => {
