@@ -15,13 +15,13 @@ export const App = () => {
   // const [error, setError] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [modalImg, setModalImg] = useState('');
-  // const [randomId, setRandomId] = useState('');
+  const [randomId, setRandomId] = useState('');
 
-  const handleSubmit = evt => {
-    setQuery(evt);
+  const handleSubmit = query => {
+    setQuery(query);
     setImages([]);
     setPage(1);
-    // setRandomId(Date.now());
+    setRandomId(Date.now());
   };
 
   const handleLoadMore = () => {
@@ -46,8 +46,10 @@ export const App = () => {
       try {
         setLoading(true);
         // setError(false);
+        console.log('help');
         const img = await fetchImg(query, page);
 
+        console.log(img);
         const imghelper = img.data.hits.map(item => ({
           id: item.id,
           webformatURL: item.webformatURL,
@@ -56,7 +58,7 @@ export const App = () => {
 
         setImages(prevState => [...prevState, ...imghelper]);
 
-        setShowBtn(Math.ceil(img.data.totalHits / 12));
+        setShowBtn(page < Math.ceil(img.data.totalHits / 12));
       } catch (error) {
         // setError(true);
       } finally {
@@ -82,9 +84,7 @@ export const App = () => {
         <ImageGallery items={images} openModalImg={openModal} />
       )}
 
-      {showBtn && images.length > 0 && (
-        <Button onClickBtn={handleLoadMore}></Button>
-      )}
+      {showBtn && <Button onClickBtn={handleLoadMore}></Button>}
 
       {loading && <Loader />}
       {isOpen && (
